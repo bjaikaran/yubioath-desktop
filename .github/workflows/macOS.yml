@@ -40,7 +40,9 @@ jobs:
         run: |
           qmake
           make
-          macdeployqt yubioath-desktop.app/ -qmldir=qml/ -appstore-compliant
+
+      - name: Run macdeployqt
+        run: macdeployqt yubioath-desktop.app/ -qmldir=qml/ -appstore-compliant -verbose=2
 
       - name: Copy over dylibs from homebrew
         run: |

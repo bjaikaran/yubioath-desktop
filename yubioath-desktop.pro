@@ -1,5 +1,5 @@
 TEMPLATE = app
-QT += core gui qml quick quickcontrols2 svg xml
+QT += core gui qml quick quickcontrols2 svg
 QT -= widgets
 
 CONFIG += c++11
