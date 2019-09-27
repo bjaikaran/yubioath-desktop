@@ -75,7 +75,7 @@ after_build:
   - ps: wget https://www.python.org/ftp/python/$env:PY_VERSION/python-$env:PY_VERSION-embed-$env:PY_ARCH.zip -OutFile python-$env:PY_VERSION-embed-$env:PY_ARCH.zip
   - 7z x python-%PY_VERSION%-embed-%PY_ARCH%.zip -o".\release"
   # Use Qt deployment tool on executable
-  - windeployqt .\release\yubioath-desktop.exe --qmldir=qml --no-translations --angle --release --no-widgets --verbose 2
+  - windeployqt .\release\yubioath-desktop.exe --qmldir=qml --no-translations --angle --release --no-widgets --xml --svg --verbose 1
   # Add python dependencies to release folder
   - ps: Copy-Item .\pymodules .\release -recurse
   # Remove .pyc files from release folder
