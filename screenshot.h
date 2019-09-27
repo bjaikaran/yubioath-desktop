@@ -1,8 +1,11 @@
 #ifndef SCREENSHOT_H
 #define SCREENSHOT_H
 #include <QObject>
-#include <QtWidgets>
 #include <QVariant>
+#include <QGuiApplication>
+#include <QImage>
+#include <QScreen>
+#include <QPixmap>
 
 class ScreenShot: public QObject
 {

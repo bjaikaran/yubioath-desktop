@@ -1,5 +1,5 @@
 TEMPLATE = app
-QT += qml quick widgets quickcontrols2
+QT += qml quick quickcontrols2
 CONFIG += c++11
 SOURCES += main.cpp
 HEADERS += screenshot.h

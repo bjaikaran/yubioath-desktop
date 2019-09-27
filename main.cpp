@@ -1,11 +1,14 @@
-#include <QApplication>
+#include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 #include <stdlib.h>
 #include <QtGlobal>
-#include <QtWidgets>
 #include <QQuickWindow>
 #include <QQuickStyle>
+#include <QCommandLineParser>
+#include <QFileInfo>
+#include <QLockFile>
+#include <QDir>
 #include "screenshot.h"
 
 int main(int argc, char *argv[])
@@ -16,9 +19,9 @@ int main(int argc, char *argv[])
     // Use Material "Dense" variant, recommended for Desktop
     qputenv("QT_QUICK_CONTROLS_MATERIAL_VARIANT", "Dense");
 
-    QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+    QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
-    QApplication application(argc, argv);
+    QGuiApplication application(argc, argv);
     application.setApplicationName("Yubico Authenticator");
     application.setApplicationVersion(APP_VERSION);
     application.setOrganizationName("Yubico");
@@ -41,10 +44,10 @@ int main(int argc, char *argv[])
     QString tmpDir = QDir::tempPath();
     QLockFile lockFile(tmpDir + "/yubioath-desktop.lock");
     if(!lockFile.tryLock(100)){
-        QMessageBox msgBox;
-        msgBox.setIcon(QMessageBox::Warning);
-        msgBox.setText("Yubico Authenticator is already running.");
-        msgBox.exec();
+       // QMessageBox msgBox;
+       // msgBox.setIcon(QMessageBox::Warning);
+      //  msgBox.setText("Yubico Authenticator is already running.");
+     //   msgBox.exec();
         return 1;
     }
 
