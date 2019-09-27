@@ -8,6 +8,7 @@
 #include <QCommandLineParser>
 #include <QFileInfo>
 #include <QLockFile>
+#include <QtSvg>
 #include <QDir>
 #include "screenshot.h"
 
