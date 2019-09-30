@@ -16,6 +16,7 @@ def read_conf(fname):
 def build_qrc(resources):
     yield '<RCC>'
     yield '<qresource>'
+    yield '<file>qtquickcontrols2.conf</file>'
     for d in resources:
         for root, dirs, files in os.walk(d):
             dirs.sort()
