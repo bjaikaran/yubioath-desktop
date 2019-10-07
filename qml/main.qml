@@ -262,12 +262,6 @@ ApplicationWindow {
 
         property int theme: Material.System
 
-        // Keep track of window and desktop dimensions.
-        property alias width: app.width
-        property alias height: app.height
-        property alias x: app.x
-        property alias y: app.y
-
         property var favorites: []
         property string favoriteDefault
 
