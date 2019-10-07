@@ -84,12 +84,8 @@ ApplicationWindow {
     }
     Component.onCompleted: {
         updateTrayVisibility()
-        ensureMinimumWindowSize()
-        ensureValidWindowPosition()
         app.visible = !(settings.closeToTray && settings.hideOnLaunch)
     }
-
-    Component.onDestruction: saveScreenLayout()
 
     FontLoader {
         id: robotoRegular;
@@ -130,25 +126,6 @@ ApplicationWindow {
 
     function isDark() {
         return app.Material.theme === Material.Dark
-    }
-
-    function saveScreenLayout() {
-        settings.desktopAvailableWidth = Screen.desktopAvailableWidth
-        settings.desktopAvailableHeight = Screen.desktopAvailableHeight
-    }
-
-    function ensureMinimumWindowSize() {
-        app.width = width < minimumWidth ? minimumWidth : width
-        app.height = height < minimumHeight ? minimumHeight : height
-    }
-
-    function ensureValidWindowPosition() {
-        // If we have the same desktop dimensions as last time, use the saved position.
-        // If not, put the window in the middle of the screen.
-        var savedScreenLayout = (settings.desktopAvailableWidth === Screen.desktopAvailableWidth)
-                && (settings.desktopAvailableHeight === Screen.desktopAvailableHeight)
-        app.x = (savedScreenLayout) ? settings.x : Screen.width / 2 - app.width / 2
-        app.y = (savedScreenLayout) ? settings.y : Screen.height / 2 - app.height / 2
     }
 
     function updateTrayVisibility() {
@@ -290,9 +267,6 @@ ApplicationWindow {
         property alias height: app.height
         property alias x: app.x
         property alias y: app.y
-
-        property int desktopAvailableWidth
-        property int desktopAvailableHeight
 
         property var favorites: []
         property string favoriteDefault
