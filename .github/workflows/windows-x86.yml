@@ -51,13 +51,13 @@ jobs:
         run: |
           wget https://developers.yubico.com/yubikey-personalization/Releases/ykpers-1.20.0-win32.zip -OutFile ykpers-1.20.0-win32.zip
           7z x ykpers-1.20.0-win32.zip
-          Copy-Item .\bin\*.dll .\ykman-gui\release -Force
+          Copy-Item .\bin\*.dll .\release -Force
 
           wget https://github.com/libusb/libusb/releases/download/v1.0.22/libusb-1.0.22.7z -OutFile libusb-1.0.22.7z
           7z x libusb-1.0.22.7z
-          Copy-Item .\MS32\dll\*.dll .\ykman-gui\release -Force
+          Copy-Item .\MS32\dll\*.dll .\release -Force
 
-          cd .\ykman-gui\release
+          cd .\release
           wget https://www.python.org/ftp/python/3.6.8/python-3.6.8-embed-win32.zip -OutFile python-3.6.8-embed-win32.zip
           7z x python-3.6.8-embed-win32.zip
         shell: powershell
