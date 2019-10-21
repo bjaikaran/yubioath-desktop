@@ -95,6 +95,7 @@ jobs:
 
       - name: Create MSI installer package
         run: |
+          path
           candle .\resources\win\yubioath-desktop.wxs
           light yubioath-desktop.wixobj
 
