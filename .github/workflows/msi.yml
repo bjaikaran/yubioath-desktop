@@ -100,7 +100,7 @@ jobs:
           set SRCDIR=.\release\
           heat dir .\release -out fragment.wxs -gg -scom -srd -sfrag -dr INSTALLDIR -cg ApplicationFiles -var env.SRCDIR
           candle .\fragment.wxs .\resources\win\yubioath-desktop.wxs
-          light fragment.wixobj yubioath-desktop.wixobj -ext WixUIExtension -o yubioath-desktop.msi
+          light fragment.wixobj yubioath-desktop.wixobj -ext WixUIExtension -ext WixUtilExtension -o yubioath-desktop.msi
           cp yubioath-desktop.msi deploy
 
       - name: Run GUI
