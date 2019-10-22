@@ -97,9 +97,10 @@ jobs:
         shell: cmd
         run: |
           set PATH=%WIX%\bin;%PATH%
-          heat dir .\release -out fragment.wxs -gg -scom -srd -sfrag -dr INSTALLDIR -cg ApplicationFiles
+          set SRCDIR=.\release\
+          heat dir .\release -out fragment.wxs -gg -scom -srd -sfrag -dr INSTALLDIR -cg ApplicationFiles -var SRCDIR
           candle .\fragment.wxs .\resources\win\yubioath-desktop.wxs
-          light yubioath-desktop.wixobj
+          light fragment.wxs yubioath-desktop.wixobj
           cp yubioath-desktop.msi deploy
 
       - name: Run GUI
