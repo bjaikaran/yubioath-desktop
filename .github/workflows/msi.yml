@@ -94,8 +94,9 @@ jobs:
         shell: powershell
 
       - name: Create MSI installer package
+        shell: cmd
         run: |
-          path
+          set PATH=%WIX%\bin;%PATH%
           candle .\resources\win\yubioath-desktop.wxs
           light yubioath-desktop.wixobj
 
