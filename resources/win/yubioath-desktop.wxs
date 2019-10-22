@@ -5,7 +5,7 @@
 
    <Product Id="*" UpgradeCode="12345678-1234-1234-1234-111111111111" Name="$(var.ProductName)" Version="$(var.ProductVersion)" Manufacturer="Yubico Ab" Language="1033">
       <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine"  Description="$(var.ProductName) $(var.ProductVersion)" />
-      <Media Id="1" Cabinet="yubioath-desktop.cab" EmbedCab="yes"/>
+      <Media Id="1" Cabinet="yubioathdesktop.cab" EmbedCab="yes"/>
 
       <Property Id="WIXUI_INSTALLDIR" Value="INSTALLDIR" />
       <UIRef Id="WixUI_InstallDir" />
