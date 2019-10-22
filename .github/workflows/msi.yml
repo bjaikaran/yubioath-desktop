@@ -97,7 +97,7 @@ jobs:
         shell: cmd
         run: |
           set PATH=%WIX%\bin;%PATH%
-          heat -dir .\release -out fragment.wxs -gg -scom -srd -sfrag -dr INSTALLDIR -cg ApplicationFiles
+          heat dir .\release -out fragment.wxs -gg -scom -srd -sfrag -dr INSTALLDIR -cg ApplicationFiles
           candle .\fragment.wxs .\resources\win\yubioath-desktop.wxs
           light yubioath-desktop.wixobj
           cp yubioath-desktop.msi deploy
