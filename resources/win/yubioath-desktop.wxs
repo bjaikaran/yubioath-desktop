@@ -11,9 +11,11 @@
       <UIRef Id="WixUI_InstallDir" />
 
       <Directory Id="TARGETDIR" Name="SourceDir">
+        <Directory Id="ApplicationRoot" Name="Yubico">
          <Directory Id="ProgramFilesFolder">
             <Directory Id="INSTALLDIR" Name="Yubico Authenticator">
             </Directory>
+          </Directory>
          </Directory>
       </Directory>
 
