@@ -1,8 +1,14 @@
 <?xml version="1.0"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-   <Product Id="*" UpgradeCode="12345678-1234-1234-1234-111111111111" Name="Yubico Authenticator" Version="0.0.1" Manufacturer="Yubico Ab" Language="1033">
-      <Package InstallerVersion="200" Compressed="yes" />
-      <Media Id="1" Cabinet="product.cab" EmbedCab="yes"/>
+  <?define ProductVersion="5.0.1" ?>
+  <?define ProductName="Yubico Authenticator" ?>
+
+   <Product Id="*" UpgradeCode="12345678-1234-1234-1234-111111111111" Name="$(var.ProductName)" Version="$(var.ProductVersion)" Manufacturer="Yubico Ab" Language="1033">
+      <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine"  Description="$(var.ProductName) $(var.ProductVersion)" />
+      <Media Id="1" Cabinet="yubioath-desktop.cab" EmbedCab="yes"/>
+
+      <Property Id="WIXUI_INSTALLDIR" Value="INSTALLDIR" />
+      <UIRef Id="WixUI_InstallDir" />
 
       <Directory Id="TARGETDIR" Name="SourceDir">
          <Directory Id="ProgramFilesFolder">
