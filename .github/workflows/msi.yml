@@ -98,7 +98,7 @@ jobs:
         run: |
           set PATH=%WIX%\bin;%PATH%
           set SRCDIR=.\release\
-          heat dir .\release -out fragment.wxs -gg -scom -srd -sfrag -dr INSTALLDIR -cg ApplicationFiles -var SRCDIR
+          heat dir .\release -out fragment.wxs -gg -scom -srd -sfrag -dr INSTALLDIR -cg ApplicationFiles -var env.SRCDIR
           candle .\fragment.wxs .\resources\win\yubioath-desktop.wxs
           light fragment.wxs yubioath-desktop.wixobj
           cp yubioath-desktop.msi deploy
