@@ -99,6 +99,8 @@ jobs:
           set PATH=%WIX%\bin;%PATH%
           candle .\resources\win\yubioath-desktop.wxs
           light yubioath-desktop.wixobj
+          dir
+          cp yubioath-desktop.msi deploy
 
       - name: Run GUI
         shell: bash
