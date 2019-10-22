@@ -8,7 +8,15 @@
       <Media Id="1" Cabinet="yubioathdesktop.cab" EmbedCab="yes"/>
 
       <Property Id="WIXUI_INSTALLDIR" Value="INSTALLDIR" />
-      <UIRef Id="WixUI_InstallDir" />
+      <Property Id="WixShellExecTarget" Value="[#yubioath-desktop.exe]" />
+      <CustomAction Id="LaunchApplication" BinaryKey="WixCA" DllEntry="WixShellExec" Impersonate="yes" />
+
+      <UI>
+          <UIRef Id="WixUI_InstallDir" />
+          <Publish Dialog="ExitDialog" Control="Finish" Event="DoAction" Value="LaunchApplication">WIXUI_EXITDIALOGOPTIONALCHECKBOX = 1 and NOT Installed</Publish>
+      </UI>
+
+      <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT" Value="Launch Yubico Authenticator" />
 
       <Directory Id="TARGETDIR" Name="SourceDir">
         <Directory Id="ApplicationRoot" Name="Yubico">
