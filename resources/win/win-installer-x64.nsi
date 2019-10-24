@@ -1,5 +1,7 @@
 !include "MUI2.nsh"
 !include "nsProcess.nsh"
+!include nsDialogs.nsh
+!include LogicLib.nsh
 
 !define MUI_ICON "../../resources/icons/yubioath.ico"
 
@@ -56,6 +58,7 @@ Var STARTMENU_FOLDER
 
   ; Pages
   !insertmacro MUI_PAGE_WELCOME
+  Page custom checkboxTest
   !insertmacro MUI_PAGE_DIRECTORY
   !insertmacro MUI_PAGE_STARTMENU Application $STARTMENU_FOLDER
   !insertmacro MUI_PAGE_INSTFILES
@@ -65,6 +68,27 @@ Var STARTMENU_FOLDER
 
   ;Languages
   !insertmacro MUI_LANGUAGE "English"
+
+  Function checkboxTest
+  	nsDialogs::Create 1018
+
+  	${If} $Dialog == error
+		Abort
+	${EndIf}
+
+	${NSD_CreateCheckbox} 0 30u 100% 10u "&Something"
+	Pop $Checkbox
+
+	${If} $Checkbox_State == ${BST_CHECKED}
+		${NSD_Check} $Checkbox
+	${EndIf}
+
+	# alternative for the above ${If}:
+	#${NSD_SetState} $Checkbox_State
+
+	nsDialogs::Show
+
+  FunctionEnd
 
   Section "Start Menu"
     !insertmacro MUI_STARTMENU_WRITE_BEGIN Application
