@@ -83,7 +83,8 @@ Dialog {
             Label {
                 text: !!yubiKey.currentDevice ? "Serial number: " + yubiKey.currentDevice.serial : ""
                 visible: !!yubiKey.currentDevice && yubiKey.currentDevice.serial
-                color: formText
+                color: primaryColor
+                opacity: highEmphasis
                 font.pixelSize: 13
                 Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
                 wrapMode: Text.WordWrap
@@ -95,7 +96,8 @@ Dialog {
             Label {
                 text: !!yubiKey.currentDevice ? "Firmware version: " + yubiKey.currentDevice.version : ""
                 visible: !!yubiKey.currentDevice && yubiKey.currentDevice.version
-                color: formText
+                color: primaryColor
+                opacity: highEmphasis
                 font.pixelSize: 13
                 Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
                 wrapMode: Text.WordWrap
@@ -105,7 +107,8 @@ Dialog {
 
             Label {
                 text: !!yubiKey.currentDevice ? qsTr("Enabled interfaces: ") + getDeviceDescription() : ""
-                color: formText
+                color: primaryColor
+                opacity: highEmphasis
                 font.pixelSize: 13
                 Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
                 wrapMode: Text.WordWrap
@@ -153,7 +156,8 @@ Dialog {
             text: qsTr("Copyright © " + Qt.formatDateTime(
                            new Date(),
                            "yyyy") + ", Yubico AB.")
-            color: formText
+            color: primaryColor
+            opacity: highEmphasis
             font.pixelSize: 13
             Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
             wrapMode: Text.WordWrap
@@ -163,7 +167,8 @@ Dialog {
 
         Label {
             text: qsTr("All rights reserved.")
-            color: formText
+            color: primaryColor
+            opacity: highEmphasis
             font.pixelSize: 13
             Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
             wrapMode: Text.WordWrap

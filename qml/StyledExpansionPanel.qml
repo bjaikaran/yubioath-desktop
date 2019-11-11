@@ -16,7 +16,7 @@ Pane {
     property string label
     property string description
     property string keyImage
-    property string backgroundColor: isDark() ? defaultDarkLighter : defaultLightDarker
+    property string backgroundColor: defaultElevated
 
     property bool isEnabled: true
     property bool isExpanded: false
@@ -40,7 +40,19 @@ Pane {
     Layout.topMargin: isExpanded && dropShadow && !isTopPanel ? 9 : -4
     Layout.bottomMargin: isExpanded && dropShadow && !isBottomPanel ? 11 : -3
 
-    background: Rectangle {
+    Material.background: backgroundColor
+    Material.elevation: dropShadow ? 1 : 0
+
+//    MouseArea {
+//        anchors.fill: parent
+//        onClicked: expandAction()
+//        width: width
+//        height: height < 74 ? height : 74
+//        enabled: isEnabled
+//        cursorShape: enabled ? Qt.PointingHandCursor : Qt.ArrowCursor
+//    }
+
+/*    background: Rectangle {
         color: backgroundColor
         layer.enabled: dropShadow
         layer.effect: DropShadow {
@@ -59,7 +71,7 @@ Pane {
             cursorShape: enabled ? Qt.PointingHandCursor : Qt.ArrowCursor
         }
     }
-
+*/
     function expandAction() {
         function collapseAll() {
             for (var i = 0; i < parent.children.length; ++i) {
@@ -140,14 +152,16 @@ Pane {
                     text: label
                     font.pixelSize: 13
                     font.bold: false
-                    color: formText
+                    color: primaryColor
+                    opacity: highEmphasis
                     Layout.fillWidth: true
                 }
                 Label {
                     Layout.alignment: Qt.AlignRight | Qt.AlignTop
                     Layout.fillWidth: true
                     font.pixelSize: 13
-                    color: formLabel
+                    color: primaryColor
+                    opacity: lowEmphasis
                     text: description
                     wrapMode: Text.WordWrap
                     maximumLineCount: isExpanded ? 4 : 2

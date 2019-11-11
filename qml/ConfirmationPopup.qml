@@ -102,7 +102,8 @@ Dialog {
         Label {
             Layout.topMargin: 16
             text: description
-            color: formText
+            color: primaryColor
+            opacity: highEmphasis
             font.pixelSize: 13
             lineHeight: 1.2
             visible: description

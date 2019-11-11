@@ -459,7 +459,8 @@ Flickable {
                     Label {
                         Layout.fillWidth: true
                         font.pixelSize: 12
-                        color: formLabel
+                        color: primaryColor
+                        opacity: lowEmphasis
                         text: qsTr("Using OTP slots should be considered for special cases only.")
                         wrapMode: Text.WordWrap
                         Layout.rowSpan: 1
@@ -551,7 +552,6 @@ Flickable {
                             }
                             settings.closeToTray = checked
                         }
-                        Material.foreground: formText
                     }
 
                     CheckBox {
@@ -563,7 +563,6 @@ Flickable {
                         indicator.width: 16
                         indicator.height: 16
                         onCheckStateChanged: settings.hideOnLaunch = checked
-                        Material.foreground: formText
                     }
 
                     CheckBox {
@@ -574,7 +573,6 @@ Flickable {
                         indicator.width: 16
                         indicator.height: 16
                         onCheckStateChanged: settings.hideBackupReminder = checked
-                        Material.foreground: formText
                     }
 
                 }

@@ -46,7 +46,7 @@ ToolTip {
         Label {
             id: snackLbl
             text: message
-            color: isDark() ? defaultDarkForeground : defaultLight
+            color: primaryColor
             opacity: 0.87
             font.pixelSize: 14
             leftPadding: 8

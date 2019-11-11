@@ -42,13 +42,13 @@ Pane {
         implicitWidth: parent.width - 1
         height: 81
         implicitHeight: 81
-        color: primaryColor
+        color: yubicoWhite
         opacity: if (credentialCard.GridView.isCurrentItem) {
                    return 0.08
                } else if (cardMouseArea.containsMouse) {
                    return 0.05
                } else {
-                   return 0.03
+                   return isDark() ? 0.03 : 1
                }
         MouseArea {
             id: cardMouseArea
@@ -388,7 +388,7 @@ Pane {
 
             icon.source: favorite ? "../images/star.svg" : "../images/star_border.svg"
             icon.color: hovered || favorite ? icon.color : primaryColor
-            opacity: hovered || favorite ? 1.0 : 0.4
+            opacity: hovered || favorite ? fullEmphasis : disabledEmphasis
             implicitHeight: 30
             implicitWidth: 30
 

@@ -49,7 +49,7 @@ Flickable {
                     navigator.confirm({
                                           "heading": qsTr("Account added. Create backup?"),
                                           "message": qsTr("Secrets are stored safely on YubiKey. Backups can only be created during setup."),
-                                          "description": qsTr("To create a backup, change YubiKey and repeat the 'Add account' procedure BEFORE verifying with the issuer. The secret key may also be copied and stored somewhere safe."),
+                                          "description": qsTr("To create a backup, change YubiKey and repeat the 'Add account' procedure BEFORE verifying with the issuer. The secret key may at this point also be copied and stored somewhere safe."),
                                           "warning": false,
                                           "copySecret": true,
                                           "buttons": false,
@@ -153,19 +153,8 @@ Flickable {
             Layout.fillWidth: true
             Layout.maximumWidth: dynamicWidth + dynamicMargin
             Layout.topMargin: 0
-
-            background: Rectangle {
-                color: isDark() ? defaultDarkLighter : defaultLightDarker
-                layer.enabled: true
-                layer.effect: DropShadow {
-                    radius: 3
-                    samples: radius * 2
-                    verticalOffset: 2
-                    horizontalOffset: 0
-                    color: formDropShdaow
-                    transparentBorder: true
-                }
-            }
+            Material.elevation: 1
+            Material.background: defaultElevated
 
             ColumnLayout {
                 width: app.width - dynamicMargin
@@ -185,7 +174,7 @@ Flickable {
 
                         StyledImage {
                             source: "../images/qr-monitor.svg"
-                            color: app.isDark() ? defaultLightForeground : defaultLightOverlay
+                            color: defaultImageOverlay
                             iconWidth: 140
                             Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
                             Layout.margins: 16
@@ -204,11 +193,10 @@ Flickable {
                                 Keys.onEnterPressed: yubiKey.scanQr(true)
                             }
                             StyledButton {
-                                text: qsTr("Enter manually")
+                                text: qsTr("Manual")
                                 toolTipText: qsTr("Enter account details manually")
                                 flat: true
                                 onClicked: manualEntryPane.expandAction()
-                                Material.foreground: formText
                                 Keys.onReturnPressed: manualEntryPane.expandAction()
                                 Keys.onEnterPressed: manualEntryPane.expandAction()
                             }
@@ -273,7 +261,6 @@ Flickable {
                                     padding: 0
                                     indicator.width: 16
                                     indicator.height: 16
-                                    Material.foreground: formText
                                     font.pixelSize: 13
                                 }
                                 visible: yubiKey.supportsTouchCredentials()
