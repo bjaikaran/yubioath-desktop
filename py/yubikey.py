@@ -222,7 +222,7 @@ class Controller(object):
         res = []
         descs_to_match = self._descs[:]
         handled_serials = set()
-        time.sleep(0.5)  # Let macOS take time to see the reader
+        time.sleep(1.0)  # Let macOS take time to see the reader
         for transport in [TRANSPORT.CCID, TRANSPORT.OTP, TRANSPORT.FIDO]:
             if not descs_to_match:
                 return res

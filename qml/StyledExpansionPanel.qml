@@ -162,7 +162,8 @@ Pane {
                 onClicked: expandAction()
                 icon.width: 24
                 icon.source: isExpanded ? "../images/up.svg" : "../images/down.svg"
-                icon.color: hovered ? iconButtonHovered : iconButtonNormal
+                icon.color: primaryColor
+                opacity: hovered ? fullEmphasis : lowEmphasis
                 visible: isEnabled
                 MouseArea {
                     anchors.fill: parent
@@ -183,7 +184,8 @@ Pane {
                 id: toolButton
                 icon.width: 24
                 icon.source: toolButtonIcon
-                icon.color: hovered ? iconButtonHovered : iconButtonNormal
+                icon.color: primaryColor
+                opacity: hovered ? fullEmphasis : lowEmphasis
                 visible: !isEnabled && !!toolButtonIcon
                 MouseArea {
                     anchors.fill: parent

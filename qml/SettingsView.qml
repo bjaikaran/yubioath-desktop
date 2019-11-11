@@ -135,15 +135,15 @@ Flickable {
         id: themes
 
         ListElement {
-            text: qsTr("System Default")
+            text: qsTr("System default")
             value: Material.System
         }
         ListElement {
-            text: qsTr("Light Mode")
+            text: qsTr("Light mode")
             value: Material.Light
         }
         ListElement {
-            text: qsTr("Dark Mode")
+            text: qsTr("Dark mode")
             value: Material.Dark
         }
     }
@@ -244,7 +244,7 @@ Flickable {
 
             StyledExpansionPanel {
                 id: passwordManagementPanel
-                label: !!yubiKey.currentDevice && yubiKey.currentDevice.hasPassword ? qsTr("Change Password") : qsTr("Set Password")
+                label: !!yubiKey.currentDevice && yubiKey.currentDevice.hasPassword ? qsTr("Change password") : qsTr("Set password")
                 description: qsTr("For additional security the YubiKey may be protected with a password.")
                 visible: !!yubiKey.currentDevice && !settings.otpMode
 
@@ -253,7 +253,7 @@ Flickable {
                     StyledTextField {
                         id: currentPasswordField
                         visible: !!yubiKey.currentDevice && yubiKey.currentDevice.hasPassword
-                        labelText: qsTr("Current Password")
+                        labelText: qsTr("Current password")
                         echoMode: TextInput.Password
                         Keys.onEnterPressed: submitPassword()
                         Keys.onReturnPressed: submitPassword()
@@ -261,7 +261,7 @@ Flickable {
                     }
                     StyledTextField {
                         id: newPasswordField
-                        labelText: qsTr("New Password")
+                        labelText: qsTr("New password")
                         echoMode: TextInput.Password
                         Keys.onEnterPressed: submitPassword()
                         Keys.onReturnPressed: submitPassword()
@@ -269,7 +269,7 @@ Flickable {
                     }
                     StyledTextField {
                         id: confirmPasswordField
-                        labelText: qsTr("Confirm Password")
+                        labelText: qsTr("Confirm password")
                         echoMode: TextInput.Password
                         Keys.onEnterPressed: submitPassword()
                         Keys.onReturnPressed: submitPassword()
@@ -437,7 +437,7 @@ Flickable {
                         StyledComboBox {
                             id: interfaceCombobox
                             label: qsTr("Interface")
-                            model: ["CCID (recommended)", "CCID - Custom reader", "OTP"]
+                            model: ["CCID (recommended)", "CCID with custom reader", "OTP"]
                             currentIndex: getCurrentIndex()
 
                             function getCurrentIndex() {
@@ -472,7 +472,7 @@ Flickable {
 
                     StyledComboBox {
                         id: slot1DigitsComboBox
-                        label: qsTr("Slot 1 Digits")
+                        label: qsTr("Slot 1 digits")
                         comboBox.textRole: "text"
                         model: otpModeDigits
                         currentIndex: interfacePanel.getComboBoxIndex(
@@ -485,7 +485,7 @@ Flickable {
 
                     StyledComboBox {
                         id: slot2DigitsComboBox
-                        label: qsTr("Slot 2 Digits")
+                        label: qsTr("Slot 2 digits")
                         comboBox.textRole: "text"
                         model: otpModeDigits
                         currentIndex: interfacePanel.getComboBoxIndex(
@@ -506,7 +506,7 @@ Flickable {
                             model: yubiKey.availableReaders
                         }
                         StyledButton {
-                            Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
+                            Layout.alignment: Qt.AlignRight | Qt.AlignBottom
                             text: qsTr("Use as filter")
                             flat: true
                             enabled: yubiKey.availableReaders.length > 0

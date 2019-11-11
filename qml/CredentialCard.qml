@@ -10,11 +10,11 @@ Pane {
     id: credentialCard
 
     Layout.minimumWidth: 300
-    Layout.minimumHeight: 82
+    Layout.minimumHeight: 81
     width: 300
-    height: 82
+    height: 81
     implicitWidth: 300
-    implicitHeight: 82
+    implicitHeight: 81
 
     property var code
     property var credential
@@ -36,21 +36,20 @@ Pane {
     background: Rectangle {
         anchors.left: parent.left
         anchors.top: parent.top
-        Layout.minimumWidth: 298
-        Layout.minimumHeight: 80
-        width: parent.width - 2
-        implicitWidth: parent.width - 2
-        height: 80
-        implicitHeight: 80
-
-        color: if (credentialCard.GridView.isCurrentItem) {
-                   return credentialCardCurrentItem
+        Layout.minimumWidth: 299
+        Layout.minimumHeight: 81
+        width: parent.width - 1
+        implicitWidth: parent.width - 1
+        height: 81
+        implicitHeight: 81
+        color: primaryColor
+        opacity: if (credentialCard.GridView.isCurrentItem) {
+                   return 0.08
                } else if (cardMouseArea.containsMouse) {
-                   return credentialCardHovered
+                   return 0.05
                } else {
-                   return credentialCardNormal
+                   return 0.03
                }
-
         MouseArea {
             id: cardMouseArea
             hoverEnabled: true
@@ -69,7 +68,8 @@ Pane {
                 id: contextMenu
                 MenuItem {
                     icon.source: "../images/copy.svg"
-                    icon.color: iconButtonNormal
+                    icon.color: primaryColor
+                    opacity: highEmphasis
                     icon.width: 20
                     icon.height: 20
                     text: qsTr("Copy to clipboard")
@@ -77,7 +77,8 @@ Pane {
                 }
                 MenuItem {
                     icon.source: favorite ? "../images/star.svg" : "../images/star_border.svg"
-                    icon.color: iconButtonNormal
+                    icon.color: primaryColor
+                    opacity: highEmphasis
                     icon.width: 20
                     icon.height: 20
                     text: favorite ? qsTr("Remove as favorite") : qsTr("Set as favorite")
@@ -85,7 +86,8 @@ Pane {
                 }
                 MenuItem {
                     icon.source: "../images/delete.svg"
-                    icon.color: iconButtonNormal
+                    icon.color: primaryColor
+                    opacity: highEmphasis
                     icon.width: 20
                     icon.height: 20
                     text: "Delete account"
@@ -327,8 +329,10 @@ Pane {
             Label {
                 id: codeLbl
                 font.pixelSize: 24
-                color: hovered || credentialCard.GridView.isCurrentItem ? iconButtonHovered : credentialCardCode
+                color: primaryColor
+                opacity: hovered || credentialCard.GridView.isCurrentItem ? fullEmphasis : highEmphasis
                 text: getCodeLblValue()
+                font.weight: credentialCard.GridView.isCurrentItem ? Font.Normal : Font.Light
             }
             Label {
                 id: nameLbl
@@ -336,7 +340,8 @@ Pane {
                 Layout.maximumWidth: credentialCard.width - 100
                 font.pixelSize: 14
                 elide: Text.ElideRight
-                color: credentialCardIssuer
+                color: primaryColor
+                opacity: lowEmphasis
             }
             ToolTip {
                 text: qsTr(nameLbl.text)
@@ -361,7 +366,7 @@ Pane {
             anchors.top: parent.top
             anchors.right: parent.right
             anchors.rightMargin: -6
-            anchors.topMargin: -8
+            anchors.topMargin: 0
 
             onClicked: toggleFavorite()
             Keys.onReturnPressed: toggleFavorite()
@@ -382,16 +387,8 @@ Pane {
             }
 
             icon.source: favorite ? "../images/star.svg" : "../images/star_border.svg"
-            icon.color: {
-                if (hovered && !favorite) {
-                    return iconButtonHovered
-                } else if (favorite) {
-                    return iconFavorite
-                } else {
-                    return iconButtonCard
-                }
-            }
-
+            icon.color: hovered || favorite ? icon.color : primaryColor
+            opacity: hovered || favorite ? 1.0 : 0.4
             implicitHeight: 30
             implicitWidth: 30
 
@@ -410,8 +407,9 @@ Pane {
             anchors.bottom: parent.bottom
             anchors.right: parent.right
             anchors.rightMargin: 3
+            anchors.bottomMargin: 8
             Layout.alignment: Qt.AlignRight | Qt.AlignBottom
-            colorCircle: credentialCardIcon
+            colorCircle: icon.color
             visible: code && code.value && credential
                      && credential.oath_type === "TOTP" ? true : false
             onTimesUp: {
@@ -433,7 +431,7 @@ Pane {
             iconHeight: 18
             source: "../images/touch.svg"
             visible: touchCredentialNoCode
-            color: credentialCardIcon
+            color: icon.color
             Layout.alignment: Qt.AlignRight
         }
 
@@ -447,7 +445,8 @@ Pane {
             iconHeight: 20
             source: "../images/refresh.svg"
             visible: hotpCredential
-            color: hotpCredentialInCoolDown ? credentialCardHOTPCoolDown : credentialCardIcon
+            color: icon.color
+            opacity: hotpCredentialInCoolDown ? lowEmphasis : fullEmphasis
             Layout.alignment: Qt.AlignRight
         }
     }

@@ -136,7 +136,8 @@ Dialog {
             }
 
             icon.source: "../images/copy.svg"
-            icon.color: hovered ? iconButtonHovered : iconButtonNormal
+            icon.color: primaryColor
+            opacity: hovered ? fullEmphasis : lowEmphasis
 
             MouseArea {
                 anchors.fill: parent
@@ -159,7 +160,6 @@ Dialog {
                 flat: true
                 enabled: true
                 critical: warning
-                font.capitalization: Font.capitalization
                 DialogButtonBox.buttonRole: DialogButtonBox.AcceptRole
                 KeyNavigation.tab: btnCancel
                 Keys.onReturnPressed: accept()
@@ -172,7 +172,6 @@ Dialog {
                 flat: true
                 critical: warning
                 enabled: true
-                font.capitalization: Font.capitalization
                 DialogButtonBox.buttonRole: DialogButtonBox.RejectRole
                 KeyNavigation.tab: btnAccept
                 Keys.onReturnPressed: reject()

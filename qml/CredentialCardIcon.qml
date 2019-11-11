@@ -7,7 +7,7 @@ Rectangle {
 
     property string letter: getIconLetter()
     property int size: 40
-    property var shade: isDark() ? Material.Shade200 : Material.Shade600
+    property var shade: isDark() ? Material.Shade200 : Material.Shade400
     width: size
     height: size
     radius: width * 0.5
@@ -57,8 +57,9 @@ Rectangle {
     Label {
         text: letter.toUpperCase()
         font.pixelSize: 24
+        font.weight: Font.Light
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
-        color: credentialCardNormal
+        color: isDark() ? "#303030" : "#ffffff"
     }
 }
