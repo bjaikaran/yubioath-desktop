@@ -27,6 +27,8 @@ ApplicationWindow {
     readonly property string yubicoWhite: "#ffffff"
     readonly property string yubicoRed: "#dc4b4c"
 
+    property string primaryColor: isDark() ? "#ffffff" : "#303030"
+
     readonly property string defaultBackground: isDark() ? "#303030" : "#f7f8f9"
     readonly property string defaultElevated: isDark() ? "#383838" : "#ffffff"
     readonly property string defaultImageOverlay: isDark() ? "#565656" : "#dddddd"
@@ -37,29 +39,16 @@ ApplicationWindow {
     property string formPlaceholderText: isDark() ? "#808080" : "#b0b0b0"
     property string formImageOverlay: isDark() ? "#d8d8d8" : "#727272"
     property string formStepBackground: isDark() ? "#565656" : "#bbbbbb"
-
-    property string credentialCardCurrentItem: isDark() ? "#4a4a4a" : "#e9e9e9"
+    property string formHighlightItem: isDark() ? "#4a4a4a" : "#e9e9e9"
 
     property string toolTipForeground: app.isDark() ? "#fafafa" : "#fbfbfb"
     property string toolTipBackground: app.isDark() ? "#4a4a4a" : "#7f7f7f"
 
     // Material Guidelines opacity levels
-    property string primaryColor: isDark() ? "#ffffff" : "#303030"
     property var fullEmphasis: 1.0
     property var highEmphasis: 0.87
     property var lowEmphasis: 0.60
     property var disabledEmphasis: 0.38
-    /*    property var elevation00dp: 0.00
-        property var elevation01dp: 0.05
-        property var elevation02dp: 0.07
-        property var elevation03dp: 0.08
-        property var elevation04dp: 0.09
-        property var elevation06dp: 0.11
-        property var elevation08dp: 0.12
-        property var elevation12dp: 0.14
-        property var elevation16dp: 0.15
-        property var elevation24dp: 0.16
-    */
 
     property var currentCredentialCard
 
@@ -284,7 +273,7 @@ ApplicationWindow {
 
         property bool closeToTray
         property bool hideOnLaunch
-        property bool hideBackupReminder
+        property bool hideRecoveryReminder
         property bool requireTouch: true
 
         property int theme: Material.System

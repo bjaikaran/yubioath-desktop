@@ -45,11 +45,11 @@ Flickable {
         function callback(resp) {
             if (resp.success) {
                 yubiKey.calculateAll(navigator.goToCredentials)
-                if (!settings.hideBackupReminder) {
+                if (!settings.hideRecoveryReminder) {
                     navigator.confirm({
-                                          "heading": qsTr("Account added. Create backup?"),
-                                          "message": qsTr("Secrets are stored safely on YubiKey. Backups can only be created during setup."),
-                                          "description": qsTr("To create a backup, change YubiKey and repeat the 'Add account' procedure BEFORE verifying with the issuer. The secret key may at this point also be copied and stored somewhere safe."),
+                                          "heading": qsTr("Account added. Create account recovery key?"),
+                                          "message": qsTr("Secrets are stored in secure elements on YubiKeys and can not be recovered."),
+                                          "description": qsTr("To create an optional recovery key, change YubiKey and repeat the 'Add account' procedure BEFORE verifying with the issuing service."),
                                           "warning": false,
                                           "copySecret": true,
                                           "buttons": false,

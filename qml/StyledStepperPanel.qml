@@ -126,7 +126,7 @@ Pane {
                     context.beginPath();
                     context.lineWidth = 1;
                     context.moveTo(width / 2, circle.height + 5);
-                    context.strokeStyle = credentialCardCurrentItem
+                    context.strokeStyle = formHighlightItem
                     context.lineTo(width / 2, height);
                     context.stroke();
                     }

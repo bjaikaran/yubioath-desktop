@@ -111,42 +111,97 @@ Dialog {
             Layout.maximumWidth: parent.width
         }
 
-        ToolButton {
-            id: copySecretBtn
-            Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
-            Layout.topMargin: -8
-            Layout.rightMargin: -8
-            Layout.bottomMargin: -8
+        RowLayout {
             visible: copySecret
-            DialogButtonBox.buttonRole: DialogButtonBox.AcceptRole
-
-            Keys.onReturnPressed: accept()
-            onClicked: accept()
-
-            Accessible.role: Accessible.Button
-            Accessible.name: "Copy"
-            Accessible.description: "Copy secret key to clipboard"
-
-            ToolTip {
-                text: qsTr("Copy secret key to clipboard")
-                delay: 1000
-                parent: copySecretBtn
-                visible: parent.hovered
-                Material.foreground: toolTipForeground
-                Material.background: toolTipBackground
+            CheckBox {
+                Layout.alignment: Qt.AlignLeft | Qt.AlignBottom
+                id: hideAccountReminder
+                font.pixelSize: 13
+                text: qsTr("Don't show again")
+                leftPadding: 0
+                KeyNavigation.backtab: copySecretBtn
+                KeyNavigation.tab: copySecretBtn
+                indicator.width: 16
+                indicator.height: 16
+                Material.foreground: primaryColor
+                opacity: highEmphasis
+                checked: settings.hideRecoveryReminder
+                onCheckStateChanged: settings.hideRecoveryReminder = checked
             }
 
-            icon.source: "../images/copy.svg"
-            icon.color: primaryColor
-            opacity: hovered ? fullEmphasis : lowEmphasis
+            Item {
+                Layout.fillWidth: true
+            }
 
-            MouseArea {
-                anchors.fill: parent
-                cursorShape: Qt.PointingHandCursor
-                enabled: false
+            ToolButton {
+                id: infoBtn
+                Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
+                Layout.topMargin: -8
+                Layout.bottomMargin: -8
+                DialogButtonBox.buttonRole: DialogButtonBox.AcceptRole
+
+                Keys.onReturnPressed: Qt.openUrlExternally("https://support.yubico.com/support/solutions/articles/15000006419-using-your-yubikey-with-authenticator-codes")
+                onClicked: Qt.openUrlExternally("https://support.yubico.com/support/solutions/articles/15000006419-using-your-yubikey-with-authenticator-codes")
+
+                Accessible.role: Accessible.Button
+                Accessible.name: "Help"
+                Accessible.description: "Help"
+
+                ToolTip {
+                    text: qsTr("Read more about how recovery works\non Yubico website.")
+                    delay: 1000
+                    parent: infoBtn
+                    visible: parent.hovered
+                    Material.foreground: toolTipForeground
+                    Material.background: toolTipBackground
+                }
+
+                icon.source: "../images/help.svg"
+                icon.color: primaryColor
+                opacity: hovered ? fullEmphasis : lowEmphasis
+
+                MouseArea {
+                    anchors.fill: parent
+                    cursorShape: Qt.PointingHandCursor
+                    enabled: false
+                }
+            }
+
+            ToolButton {
+                id: copySecretBtn
+                Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
+                Layout.topMargin: -8
+                Layout.rightMargin: -8
+                Layout.bottomMargin: -8
+                DialogButtonBox.buttonRole: DialogButtonBox.AcceptRole
+
+                Keys.onReturnPressed: accept()
+                onClicked: accept()
+
+                Accessible.role: Accessible.Button
+                Accessible.name: "Copy"
+                Accessible.description: "Copy secret key to clipboard"
+
+                ToolTip {
+                    text: qsTr("Copy secret key to clipboard and\nstore it somewhere safe")
+                    delay: 1000
+                    parent: copySecretBtn
+                    visible: parent.hovered
+                    Material.foreground: toolTipForeground
+                    Material.background: toolTipBackground
+                }
+
+                icon.source: "../images/copy.svg"
+                icon.color: primaryColor
+                opacity: hovered ? fullEmphasis : lowEmphasis
+
+                MouseArea {
+                    anchors.fill: parent
+                    cursorShape: Qt.PointingHandCursor
+                    enabled: false
+                }
             }
         }
-
         DialogButtonBox {
             Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
             Layout.topMargin: 0

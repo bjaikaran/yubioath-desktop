@@ -56,7 +56,7 @@ Dialog {
                 id: rectangle
                 width: 140
                 height: 140
-                color: credentialCardCurrentItem
+                color: formHighlightItem
                 radius: width * 0.5
                 Layout.margins: 16
                 Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
@@ -128,7 +128,7 @@ Dialog {
                     context.beginPath();
                     context.lineWidth = 1;
                     context.moveTo(0, height / 2);
-                    context.strokeStyle = credentialCardCurrentItem
+                    context.strokeStyle = formHighlightItem
                     context.lineTo(width, height / 2);
                     context.stroke();
                 }

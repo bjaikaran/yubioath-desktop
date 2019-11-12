@@ -60,6 +60,6 @@ Rectangle {
         font.weight: Font.Light
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
-        color: isDark() ? "#303030" : "#ffffff"
+        color: defaultElevated
     }
 }

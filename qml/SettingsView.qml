@@ -567,12 +567,12 @@ Flickable {
 
                     CheckBox {
                         id: promptForBackupKey
-                        checked: settings.hideBackupReminder
-                        text: qsTr("Hide backup reminder")
+                        checked: settings.hideRecoveryReminder
+                        text: qsTr("Hide account recovery reminder")
                         padding: 0
                         indicator.width: 16
                         indicator.height: 16
-                        onCheckStateChanged: settings.hideBackupReminder = checked
+                        onCheckStateChanged: settings.hideRecoveryReminder = checked
                     }
 
                 }

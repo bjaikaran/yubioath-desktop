@@ -107,7 +107,7 @@ Pane {
                 id: rectangle
                 width: 40
                 height: 40
-                color: credentialCardCurrentItem
+                color: formHighlightItem
                 radius: width * 0.5
                 visible: keyImage
                 Layout.rightMargin: 8
